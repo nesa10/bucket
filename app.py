@@ -1,9 +1,17 @@
+import os
+from os.path import join, dirname
+from dotenv import load_dotenv
 from flask import Flask, render_template, request, jsonify
 from pymongo import MongoClient
 
-client = MongoClient('mongodb+srv://nesa:nesasaputri@cluster0.7le98k4.mongodb.net/?retryWrites=true&w=majority')
+dotenv_path = join(dirname(__file__), '.env')
+load_dotenv(dotenv_path)
 
-db = client.dbsparta
+MONGODB_URI = os.environ.get("MONGODB_URI")
+DB_NAME =  os.environ.get("DB_NAME")
+
+client = MongoClient(MONGODB_URI)
+db = client[DB_NAME]
 app = Flask(__name__)
 
 @app.route('/')
@@ -12,9 +20,9 @@ def home():
 
 @app.route("/bucket", methods=["POST"])
 def bucket_post():
-    # sample_receive = request.form['sample_give']
+    num_receive = request.form['num_give']
     bucket_receive = request.form['bucket_give']
-
+     
     count = db.bucket.count_documents({})
     num = count + 1
 
