@@ -124,14 +124,14 @@
             });
         }
         function save_bucket() {
-            let bucket = $('#bucket').val();
+            let bucket = $('#bucket').val()
             $.ajax({
                 type: "POST",
                 url: "/bucket",
                 data: { bucket_give: bucket },
                 success: function (response) {
                     alert(response["msg"])
-                    window.location.reload();
+                    window.location.reload()
                 }
             });
         }
@@ -139,7 +139,7 @@
             $.ajax({
                 type: "POST",
                 url: "/bucket/done",
-                data: { num_give: num },
+                data: { num_give: num, },
                 success: function (response) {
                     alert(response["msg"])
                     window.location.reload()
@@ -150,7 +150,7 @@
             $.ajax({
                 type: "POST",
                 url: "/delete",
-                data: { num_give: num },
+                data: { num_give: num, },
                 success: function (response) {
                     alert(response["msg"]);
                     window.location.reload();
