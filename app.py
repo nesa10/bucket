@@ -20,7 +20,6 @@ def home():
 
 @app.route("/bucket", methods=["POST"])
 def bucket_post():
-    num_receive = request.form['num_give']
     bucket_receive = request.form['bucket_give']
      
     count = db.bucket.count_documents({})
