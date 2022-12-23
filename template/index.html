@@ -101,25 +101,24 @@
                     for (let i = 0; i < rows.length; i++) {
                         let bucket = rows[i]['bucket'];
                         let num = rows[i]['num'];
-                        let done = rows[i]['done'];
+                        let done = rows[i]['done']
+
                         let temp_html = '';
                         if (done === 0) {
-                            temp_html = `
-        <li>
+                            temp_html = ` <li>
             <h2>✅ ${bucket}</h2>
             <button onclick="done_bucket(${num})" type="button" class="btn btn-outline-primary">Done!</button>
             <button onclick="delete_bucket(${num})" type="button" class="btn btn-outline-danger">Delete!</button>
-        </li>
-                            `;
+        </li>`
+                            
                         } else {
-                            temp_html = `
-        <li>
+                            temp_html = `<li>
             <h2 class="done">✅ ${bucket}</h2>
             <button onclick="delete_bucket(${num})" type="button" class="btn btn-outline-danger">Delete!</button>
-        </li>
-                            `;
+        </li>`
+                            
                         }
-                        $('#bucket-list').append(temp_html);
+                        $('#bucket-list').append(temp_html)
                     }
                 }
             });
@@ -142,8 +141,8 @@
                 url: "/bucket/done",
                 data: { num_give: num },
                 success: function (response) {
-                    alert(response["msg"]);
-                    window.location.reload();
+                    alert(response["msg"])
+                    window.location.reload()
                 }
             });
         }
